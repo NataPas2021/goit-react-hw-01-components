@@ -1,14 +1,9 @@
 import PropTypes from 'prop-types';
-
-const Stats = ({ label , quantity }) => {
-    return <li>
-      <span className="label">{label}</span>
-      <span className="quantity">{quantity}</span>
-    </li>
-}
+import { ProfileStats } from '../ProfileStats/ProfileStats';
+import { ProfileWrapper } from './Profile.styled';
 
 export const Profile = ({ username, tag, location, avatar, stats }) => {
-    return (<div className="profile">
+    return (<ProfileWrapper className="profile">
     <div className="description">
       <img
         src={avatar}
@@ -22,11 +17,11 @@ export const Profile = ({ username, tag, location, avatar, stats }) => {
     </div>
   
     <ul className="stats">
-      <Stats label="Followers:" quantity={`${stats.followers}`}/>
-      <Stats label="Views:" quantity={`${stats.views}`}/>
-      <Stats label="Likes:" quantity={`${stats.likes}`}/>
+      <ProfileStats label="Followers:" quantity={`${stats.followers}`}/>
+      <ProfileStats label="Views:" quantity={`${stats.views}`}/>
+      <ProfileStats label="Likes:" quantity={`${stats.likes}`}/>
     </ul>
-  </div>
+  </ProfileWrapper>
     ) 
 };
 
