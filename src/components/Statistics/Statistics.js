@@ -1,20 +1,15 @@
 import PropTypes from 'prop-types';
 
-const StatisticsItem = ({ label, persentage})=> {
-    <li class="item">
-        <span class="label">{label}</span>
-        <span class="percentage">{persentage}</span>
-      </li>
-};
-
-export const Statistics = ({ data: { title, stats }}) => {
+export const Statistics = ({title, stats}) => {
     return (<section className="statistics">
-    <h2 className="title">{title}</h2>
+    {title &&
+    <h2 className="title">{title}</h2>}
   
     <ul className="stat-list">
-      <StatisticsItem label={`${stats.label}`} persentage={`${stats.persentage}`}/>
-      
-
+    <li className="item">
+      <span className="label">{stats.label}</span>
+      <span className="percentage">{stats.percentage}%</span>
+    </li>
     </ul>
   </section>
 
@@ -22,11 +17,9 @@ export const Statistics = ({ data: { title, stats }}) => {
 }
 
 Statistics.propTypes = {
- data: PropTypes.shape({
     title: PropTypes.string,
-    stats: PropTypes.oneOfType([
+    stats: PropTypes.shape([
         PropTypes.string,
         PropTypes.number
-    ])
- }).isRequired,
-};
+    ]).isRequired
+ };
